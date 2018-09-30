@@ -1,0 +1,24 @@
+{
+  "name": "twitch-channel-downloader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "twitch-archiver.js",
+  "scripts": {
+    "build": "./node_modules/pkg/lib-es5/bin.js twitch-archiver.js --out-path ./bin/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryan Howell <contact@rhowell.io>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "commander": "^2.18.0",
+    "csv-parser": "^1.12.1",
+    "fast-levenshtein": "^2.0.6",
+    "moment": "^2.22.2",
+    "sanitize-filename": "^1.6.1",
+    "twitch-api-v5": "^2.0.4",
+    "ytdl-core": "^0.25.2"
+  },
+  "devDependencies": {
+    "pkg": "^4.3.4"
+  }
+}

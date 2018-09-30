@@ -1,0 +1,6 @@
+bin
+node_modules
+blacklist*
+priority*
+output*
+dl.lock
