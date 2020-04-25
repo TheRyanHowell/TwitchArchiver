@@ -10,6 +10,7 @@ const levenshtein = require('fast-levenshtein')
 const { spawnSync } = require('child_process');
 
 let self = null;
+
 class TwitchArchiver {
   constructor(apiKey) {
     // Set twitch API Key
@@ -33,6 +34,7 @@ class TwitchArchiver {
   }
 
   // Function to check if it's possible to run given the parameters
+  // Return a specific status code for each type of error
   canRun() {
     if(fs.existsSync('dl.lock')) {
       return 2;
@@ -191,6 +193,7 @@ class TwitchArchiver {
     });
   }
 
+  // Function to actually downlad a video
   processVideo(videoData) {
     return new Promise(function(resolve, reject){
       // Get a prettier version of the video id
@@ -285,7 +288,7 @@ class TwitchArchiver {
       return selectedFormat;
     }
 
-    // Try levenshtein
+    // Try levenshtein distance
     var lastLevenshtein = Number.MAX_SAFE_INTEGER;
     for(let wantedFormat of this.priority) {
       for(let actualFormat in formats) {
@@ -303,8 +306,6 @@ class TwitchArchiver {
       this.log('Guessed format: ' + selectedFormat);
       return selectedFormat;
     }
-
-    console.log('HIT');
 
     return false;
   }
